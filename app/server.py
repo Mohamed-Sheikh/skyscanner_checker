@@ -11,9 +11,14 @@ def index():
     return render_template(file_name)
 
 """When routed, will display results of ticket prices"""
-@app.route('/results')
+@app.route('/results', methods=["POST"])
 def results():
-    pass
+    result = request.form
+    if request.method != 'POST':
+        result = request.form
+        print(result['from_date'])
+    else:
+        return result['from_dest']
 
 """Main entry point for application"""
 def main():
